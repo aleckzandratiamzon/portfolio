@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aleckzandra Tiamzon — Solutions Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="icon" type="image/png" href="letter-a.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e8f0;
+    --muted: #7a7a96;
+    --accent: #6c63ff;
+    --accent2: #a78bfa;
+    --accent-glow: rgba(108,99,255,0.15);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 2.5rem 4rem;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hero-inner { width: 100%; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: #f0f0fa;
+  }
+  h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(168,139,250,0.5);
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px; font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #7c74ff; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* SECTIONS */
+  section { padding: 6rem 2.5rem; max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #f0f0fa;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .about-stats { display: grid; gap: 1rem; }
+  .stat-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .stat-num {
+    font-size: 2rem; font-weight: 600;
+    color: var(--accent2);
+    font-family: var(--mono);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 0.25rem; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-group {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-size: 12px;
+    background: rgba(108,99,255,0.1);
+    color: var(--accent2);
+    border: 1px solid rgba(108,99,255,0.2);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-family: var(--mono);
+  }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; gap: 1.25rem; }
+  .project-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+  .project-name { font-size: 1rem; font-weight: 500; color: #f0f0fa; }
+  .project-link { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .project-link:hover { color: var(--accent2); }
+  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stack-tag {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+  }
+  .contact-inner p { color: var(--muted); max-width: 440px; margin: 0.75rem auto 2rem; font-size: 15px; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0 2.5rem; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-inner { padding: 2rem 1.5rem; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Aleckzandra</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Associate Solutions Architect</div>
+    <h1>Building cloud infra<br/>that <span>actually scales.</span></h1>
+    <p class="hero-desc">
+      I design and automate <strong>AWS infrastructure</strong> — from provisioning to CI/CD pipelines — so cloud apps ship fast and run reliably. Based in the Philippines, working across the stack.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// about</div>
+  <h2>Who I am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a solutions architect focused on <strong>cloud-native systems on AWS</strong>. I work with the AWS SDK and CDK to provision infrastructure as code, and I manage CI/CD pipelines on Azure DevOps to keep deployments smooth and automated.</p>
+      <p>Beyond infra, I handle full platform management — from web apps and databases to monitoring and automation scripts. I enjoy the puzzle of making complex systems simple and resilient.</p>
+      <p>When I'm not architecting cloud solutions, I'm exploring new DevOps tooling, tinkering with automation, or teaching what I know.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">AWS</div>
+        <div class="stat-label">Primary cloud platform</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">CDK</div>
+        <div class="stat-label">Infrastructure as Code in TypeScript</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">CI/CD</div>
+        <div class="stat-label">Azure DevOps pipelines & automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// skills</div>
+  <h2>Tech stack</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud & Infra</div>
+      <div class="skill-tags">
+        <span class="tag">AWS</span>
+        <span class="tag">CDK</span>
+        <span class="tag">EC2</span>
+        <span class="tag">ALB</span>
+        <span class="tag">Elastic Beanstalk</span>
+        <span class="tag">DynamoDB</span>
+        <span class="tag">S3</span>
+        <span class="tag">RDS</span>
+        <span class="tag">IAM</span>
+        <span class="tag">Lambda</span>
+        <span class="tag">Cloudwatch</span>
+        <span class="tag">Lightsail</span>
+        <span class="tag">Cloudfront</span>
+        <span class="tag">Eventbridge</span>
+        <span class="tag">Cloudflare</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">DevOps</div>
+      <div class="skill-tags">
+        <span class="tag">Azure DevOps</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Terraform</span>
+        <span class="tag">Nginx</span>
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">SonarQube</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">TypeScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">Bash</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">PowerShell</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Platforms</div>
+      <div class="skill-tags">
+        <span class="tag">WordPress</span>
+        <span class="tag">Moodle</span>
+        <span class="tag">osTicket</span>
+        <span class="tag">Metabase</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Playwright</span>
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Codex CLI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// projects</div>
+  <h2>Selected work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Auto-Scaling Backend Infrastructure on Elastic Beanstalk</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Designed and provisioned an AWS Elastic Beanstalk environment for a Node.js backend with auto-scaling configured — automatically adjusting capacity based on traffic load, ensuring the app stays responsive without manual intervention.</p>
+      <div class="project-stack">
+        <span class="stack-tag">AWS CDK</span>
+        <span class="stack-tag">AWS EC2</span>
+        <span class="stack-tag">AWS Elastic Beanstalk</span>
+        <span class="stack-tag">CloudWatch</span>
+        <span class="stack-tag">Node.js</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Metabase EC2 Migration</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Migrated a Metabase analytics instance from Lightsail to EC2, moving the external MySQL database via mysqldump and reconfiguring environment variables for zero-downtime switchover.</p>
+      <div class="project-stack">
+        <span class="stack-tag">AWS EC2</span>
+        <span class="stack-tag">Lightsail</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">Metabase</span>
+        <span class="stack-tag">Linux</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Full-Stack CI/CD Pipeline (Frontend & Backend)</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Built Azure DevOps pipelines that automatically build and deploy both ends of the stack — the frontend ships to S3 with CloudFront cache invalidation on every push, while the Node.js backend gets packaged, uploaded to S3, and deployed to Elastic Beanstalk on every merge.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Azure DevOps</span>
+        <span class="stack-tag">AWS CDK</span>
+        <span class="stack-tag">CloudFront</span>
+        <span class="stack-tag">S3</span>
+        <span class="stack-tag">Elastic Beanstalk</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">YAML</span>
+        <span class="stack-tag">Bash</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Azure DevOps Automated Code Review Pipeline</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Built Azure DevOps pipelines that automate code quality checks on pull requests — running AI-powered review via Codex CLI and posting recommendations as PR comments, while a separate pipeline spins up a Docker MySQL container on the agent to validate SQL scripts and flag syntax errors before anything merges.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Azure DevOps</span>
+        <span class="stack-tag">Codex CLI</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Bash</span>
+        <span class="stack-tag">YAML</span>
+        <span class="stack-tag">jq</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Lambda Security & Backup Automations</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Built two Lambda functions to handle compliance and data protection — one monitors IAM access key age across the dev account and automatically deletes any key hitting 90 days to eliminate stale credentials, while the other runs on a schedule to back up RDS and DynamoDB from the production account into a separate AWS account for cross-account recovery.</p>
+      <div class="project-stack">
+        <span class="stack-tag">AWS SDK</span>
+        <span class="stack-tag">AWS Lambda</span>
+        <span class="stack-tag">IAM</span>
+        <span class="stack-tag">RDS</span>
+        <span class="stack-tag">DynamoDB</span>
+        <span class="stack-tag">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">SEOgpt — Custom GPT for SEO Workflows</div>
+        <a href="#" class="project-link">↗ private</a>
+      </div>
+      <p class="project-desc">Built a custom GPT tailored for SEO tasks — eliminating repetitive prompting by embedding context, tone, and workflow logic directly into the model, making audits and content optimization faster and more consistent.</p>
+      <div class="project-stack"> 
+        <span class="stack-tag">ChatGPT</span>
+        <span class="stack-tag">Prompt Engineering</span>
+        <span class="stack-tag">Custom GPT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// contact</div>
+  <h2>Let's connect</h2>
+  <div class="contact-inner">
+    <p>Open to collaborations, freelance projects, and cloud infrastructure consulting. Drop me a message.</p>
+    <div class="contact-links">
+      <a href="mailto:aleckzandratiamzon@gmail.com" class="btn btn-primary">aleckzandratiamzon@gmail.com</a>
+      <a href="https://linkedin.com/in/sample" class="btn btn-outline" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com" class="btn btn-outline" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Built by Aleckzandra · © 2026</span>
+</footer>
+
+</body>
+</html>
